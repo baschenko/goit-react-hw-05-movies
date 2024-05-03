@@ -1,0 +1,9 @@
+.header {
+    display: flex;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #2a363b;
+}
+
+.image {
+    margin-right: 15px;
+}
