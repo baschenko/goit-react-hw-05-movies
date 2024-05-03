@@ -1,13 +1,13 @@
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
-import * as API from '../service/api';
+import * as API from '../../service/api';
 import styles from './MovieDetails.module.css';
 
 const MovieDetails = () => {
   const location = useLocation();
   const { movieId } = useParams();
   const [movie, setMovie] = useState();
-  const backLinkLocationRef = useRef(location.state?.from ?? '/')
+  const backLinkLocationRef = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     async function getMovieInfo() {
@@ -20,11 +20,6 @@ const MovieDetails = () => {
     //HTTP запрос на мотирование
     getMovieInfo();
   }, [movieId]);
-
-  console.log('location_Ditails:', location);
-  console.log('movieId:', movieId);
-  console.log('moviessss:', movie);
-  console.log('backLinkLocationRef.current', backLinkLocationRef.current);
 
   return (
     <>

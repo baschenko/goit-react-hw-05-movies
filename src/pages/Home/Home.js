@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
-import * as API from '../service/api';
+import * as API from '../../service/api';
 import { MoviesItem } from 'components/MoviesItem/MoviesItem';
 import { useLocation } from 'react-router-dom';
-
-
 
 const Home = () => {
   const [movies, setMovies] = useState(null);
@@ -17,12 +15,12 @@ const Home = () => {
         console.log('movies:', movies);
       } catch (error) {}
     }
-  console.log('запус эфекта на Home');
+    console.log('запус эфекта на Home');
     //HTTP запрос на мотирование
     getMovies();
   }, []);
 
-console.log('location_Home:', location);
+  console.log('location_Home:', location);
 
   return (
     <div>

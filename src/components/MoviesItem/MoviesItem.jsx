@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 export const MoviesItem = ({ hits }) => {
     const location = useLocation();
@@ -11,4 +12,8 @@ export const MoviesItem = ({ hits }) => {
         <Link state={{from: location}} to={`/movies/${hit.id}`}>{hit.title}</Link>
       </li>
     ));
+}
+
+MoviesItem.propTypes = {
+    hits: PropTypes.array.isRequired,
 }
