@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import * as API from '../../service/api';
 import { MoviesItem } from 'components/MoviesItem/MoviesItem';
+import styles from './Movies.module.css';
 
 const Movies = () => {
   const [searchParam, setSearchParam] = useSearchParams();
-  // const movieId = searchParam.get('query') ?? '';
   const [query, setQuery] = useState('');
   const [searchMovies, setSearchMovies] = useState([]);
 
@@ -35,19 +35,24 @@ const Movies = () => {
     setQuery('');
   };
 
+  const onSubmit = evt => {
+    evt.preventDefault();
+  };
+
   return (
-    <>
-      <div>Movies</div>
-      <input type="text" value={query} onChange={updateQueryString} />
-      <button type="button" onClick={onChangeQuery}>
-        Search
-      </button>
+    <div className={styles.container}>
+      <form onSubmit={onSubmit}>
+        <input type="text" value={query} onChange={updateQueryString} />
+        <button type="submit" onClick={onChangeQuery}>
+          Search
+        </button>
+      </form>
       {searchMovies !== null && (
         <ul>
           <MoviesItem hits={searchMovies} />
         </ul>
       )}
-    </>
+    </div>
   );
 };
 

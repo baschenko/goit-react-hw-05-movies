@@ -22,8 +22,12 @@ const MovieDetails = () => {
   }, [movieId]);
 
   return (
-    <>
-      <Link to={backLinkLocationRef.current}>👈 Go Back</Link>
+    <div className={styles.container}>
+      <Link to={backLinkLocationRef.current}>
+        <button type="button" className={styles.btn}>
+          👈 Go Back
+        </button>
+      </Link>
       {movie && (
         <>
           <div className={styles.header}>
@@ -35,7 +39,7 @@ const MovieDetails = () => {
             />
             <div>
               <h1>{movie.original_title}</h1>
-              <p>User Score: {movie.vote_average * 10} %</p>
+              <p>User Score: {Math.ceil(movie.vote_average * 10)} %</p>
               <h2>Overview</h2>
               <p>{movie.overview}</p>
               <h2>Genres</h2>
@@ -43,7 +47,7 @@ const MovieDetails = () => {
             </div>
           </div>
           <p>Additional information</p>
-          <ul>
+          <ul className={styles.block}>
             <li>
               <Link to="cast">cast</Link>
             </li>
@@ -56,7 +60,7 @@ const MovieDetails = () => {
       <Suspense fallback={<div>Loading Subpage...</div>}>
         <Outlet />
       </Suspense>
-    </>
+    </div>
   );
 };
 

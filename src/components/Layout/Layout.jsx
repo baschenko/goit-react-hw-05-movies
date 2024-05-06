@@ -5,7 +5,7 @@ import styles from './Layout.module.css';
 export const Layout = () => {
   return (
     <div>
-      <header>
+      <header className={styles.header}>
         <nav>
           <NavLink
             to="/"
@@ -13,7 +13,7 @@ export const Layout = () => {
               [styles.link, isActive ? styles.activeLink : ''].join(' ')
             }
           >
-            Домашняя
+            Home
           </NavLink>
           <NavLink
             to="movies"
@@ -21,7 +21,7 @@ export const Layout = () => {
               [styles.link, isActive ? styles.activeLink : ''].join(' ')
             }
           >
-            Коллекция
+            Movies
           </NavLink>
         </nav>
       </header>

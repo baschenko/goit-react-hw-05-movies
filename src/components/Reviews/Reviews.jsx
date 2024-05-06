@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 import * as API from '../../service/api';
 
 const Reviews = () => {
-    const { movieId } = useParams();
-    const [reviews, setReviews] = useState();
-    
+  const { movieId } = useParams();
+  const [reviews, setReviews] = useState();
+
   useEffect(() => {
     async function getMovieInfo() {
       try {
@@ -18,13 +18,13 @@ const Reviews = () => {
     getMovieInfo();
   }, [movieId]);
 
-    console.log('reviews:', reviews);
-
-    return (
-      <>
-        {reviews && (
+  return (
+    <>
+      {reviews &&
+        (reviews.total_results === 0 ? (
+          `We don't have any review for this movie`
+        ) : (
           <>
-            <div>Reviews</div>
             <ul>
               {reviews.results.map(review => (
                 <li key={review.id}>
@@ -34,9 +34,9 @@ const Reviews = () => {
               ))}
             </ul>
           </>
-        )}
-      </>
-    );
+        ))}
+    </>
+  );
 };
 
 export default Reviews;
