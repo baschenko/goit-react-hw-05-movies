@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const options = {
   method: 'GET',
-  // url: 'https://api.themoviedb.org/3/trending/movie/day',
   params: { language: 'en-US' },
   headers: {
     accept: 'application/json',

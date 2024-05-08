@@ -4,7 +4,7 @@ import * as API from '../../service/api';
 import { MoviesItem } from 'components/MoviesItem/MoviesItem';
 import styles from './Movies.module.css';
 
-const Movies = () => {
+const Movies = ({ options }) => {
   const [searchParam, setSearchParam] = useSearchParams();
   const [query, setQuery] = useState('');
   const [searchMovies, setSearchMovies] = useState([]);
@@ -49,7 +49,7 @@ const Movies = () => {
       </form>
       {searchMovies !== null && (
         <ul>
-          <MoviesItem hits={searchMovies} />
+          <MoviesItem hits={searchMovies} options={options} />
         </ul>
       )}
     </div>
